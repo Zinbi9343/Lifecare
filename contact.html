@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="hi">
+    <meta charset="UTF-8">
+    <title>UK Hospital</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div>
+            संपर्क करें 9009687331
+            इमेल medicoboy93@gmail.com
+        </div>
+    </div>
+
+    <div class="logo">
+        <div>
+            <table>
+                <tr>
+                    <td width="600px" style="font-size:50px;font-family:forte;">
+                        <font color="#428bca">लाइफ केयर</font><font color="#000"> निदान केंद्र</font>
+                    </td>
+                    <td>
+                        <br><br>
+                        <font size="4px">
+                            <a href="index.html">होम</a>
+                            <a href="about.html">बारे मैं</a>
+                            <a href="service.html">सेवा</a>
+                            <a href="doctor.html">डॉक्टर</a>
+                            <a href="contact.html">संपर्क करें</a>
+                            <a href="gallery.html">लम्हे और फोटो</a>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div>
+            <table border="0">
+                <tr>
+                    <td width="700px">
+                        <font color="#000">------------ </font>
+                        <br><br>
+                        <font color="#000" size="6px"> संपर्क करें</font>
+                        <br><br>
+                        लाइफ केयर निदान केंद्र
+                        <br><br>
+                        मोबाइल : +91 9009687331
+                        <br><br>
+                        ईमेल : medicoboy93@gmail.com
+                        <br><br><br>
+                    </td>
+                    <td style="padding-left:20px;"> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br><br>
+  
+          <label for="origin">Origin:</label>
+    <input type="text" id="origin" name="origin">
+
+    <input type="hidden" id="destination" name="destination">
+
+    <button onclick="redirectToGoogleMaps()">Go</button>
+    <div class="nav_down">
+        <div>
+            &copy; लाइफ केयर निदान केंद्र साइट डिज़ाइन किया गया ज़ुबैर द्वारा & Copyright ©
+        </div>
+    </div>
+
+    <script>
+        function updateDestination() {
+            const origin = document.getElementById('origin').value;
+            const destinationField = document.getElementById('destination');
+
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+
+            if (dayOfWeek === 0 || dayOfWeek === 6) { // Sunday or Saturday
+                destinationField.value = '23.7124410, 78.2919954';
+            } else {
+                destinationField.value = '23.2609083, 77.4285226';
+            }
+        }
+
+        function redirectToGoogleMaps() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+            window.location.href = url;
+        }
+
+        // Call updateDestination initially
+        updateDestination();
+    </script>
+</body>
+</html>
